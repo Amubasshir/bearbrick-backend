@@ -1,6 +1,6 @@
 # BE@RBRICK Crowd-Sourced Pricing Engine (Node.js)
 
-Backend-only Node.js app implementing the same crowd-sourced pricing engine as **crowd-sourced-laravel**.  
+Backend-only Node.js app implementing the same crowd-sourced pricing engine
 Follows **SPECIFICATION.md** and **CLARIFICATIONS.md** (event-sourced, deterministic workers).
 
 ## Stack
@@ -30,7 +30,7 @@ npm run dev
 
 API base: `http://localhost:3000/api`
 
-## Routes (same as Laravel)
+## Routes
 
 | Method | Path                          | Auth     | Description                                                 |
 | ------ | ----------------------------- | -------- | ----------------------------------------------------------- |
@@ -69,15 +69,11 @@ Use Supervisor/PM2 or cron to run workers continuously.
 
 ## Manual / logic testing (SPECIFICATION + CLARIFICATIONS)
 
-Laravel-এর tinker + manual test steps এর মতো Node-এ:
-
-- **Tinker-like DB inspect:** `npm run tinker` বা `node scripts/inspect-db.js` (stats, state, intents, events, credits, cursors)
 - **Get brick ID:** `node scripts/inspect-db.js brick-id`
 - **Reset cursors/credits (test):** `npm run reset:cursors`, `npm run reset:credits`
 - **Full flow test (intent → enrich → aggregate → state):** `npm run test:flow`
 - **সব logic test (DB insert + enrich + aggregate + credits + sentiment + snapshot):** `npm run test:logic`
-
-বিস্তারিত: [docs/MANUAL_TEST_STEPS.md](./docs/MANUAL_TEST_STEPS.md), [docs/LOCAL_TESTING.md](./docs/LOCAL_TESTING.md).
+ [docs/MANUAL_TEST_STEPS.md](./docs/MANUAL_TEST_STEPS.md), [docs/LOCAL_TESTING.md](./docs/LOCAL_TESTING.md).
 
 ## Testing (Jest)
 
