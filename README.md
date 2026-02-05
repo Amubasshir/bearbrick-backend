@@ -38,7 +38,8 @@ API base: `http://localhost:3000/api`
 | POST   | `/api/logout`                 | Bearer   | Revoke (client discards token)                              |
 | GET    | `/api/me`                     | Bearer   | Current user                                                |
 | POST   | `/api/vote_intents`           | Bearer   | Body: `{ "brick_id", "vote_type" }` (UNDER \| FAIR \| OVER) |
-| GET    | `/api/bricks/:brick_id/state` | Optional | Sentiment/confidence only if user has voted                 |
+| GET    | `/api/bricks`                 | Optional | All bricks info (sentiment only if user has voted)          |
+| GET    | `/api/bricks/:brick_id/state` | Optional | Single brick state (sentiment only if user has voted)       |
 
 ## Workers (spec Appendix B)
 
@@ -72,8 +73,8 @@ Use Supervisor/PM2 or cron to run workers continuously.
 - **Get brick ID:** `node scripts/inspect-db.js brick-id`
 - **Reset cursors/credits (test):** `npm run reset:cursors`, `npm run reset:credits`
 - **Full flow test (intent → enrich → aggregate → state):** `npm run test:flow`
-- **সব logic test (DB insert + enrich + aggregate + credits + sentiment + snapshot):** `npm run test:logic`
- [docs/MANUAL_TEST_STEPS.md](./docs/MANUAL_TEST_STEPS.md), [docs/LOCAL_TESTING.md](./docs/LOCAL_TESTING.md).
+- ** logic test (DB insert + enrich + aggregate + credits + sentiment + snapshot):** `npm run test:logic`
+  [docs/MANUAL_TEST_STEPS.md](./docs/MANUAL_TEST_STEPS.md), [docs/LOCAL_TESTING.md](./docs/LOCAL_TESTING.md).
 
 ## Testing (Jest)
 

@@ -15,8 +15,9 @@ router.post(
   "/vote_intents",
   auth,
   rateLimitVoteIntents,
-  VoteIntentController.store,
+  VoteIntentController.store
 );
+router.get("/bricks", optionalAuth, BrickController.getAllBricks);
 router.get("/bricks/:brick_id/state", optionalAuth, BrickController.getState);
 
 module.exports = router;
