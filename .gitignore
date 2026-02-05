@@ -3,3 +3,4 @@ node_modules/
 .DS_Store
 *.log
 docs/
+src/config/swagger-output.json

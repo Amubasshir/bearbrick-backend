@@ -30,6 +30,27 @@ npm run dev
 
 API base: `http://localhost:3000/api`
 
+## API Documentation (Swagger)
+
+Interactive API documentation available at: `http://localhost:3000/api-docs`
+
+**First time setup:**
+
+```bash
+npm install
+npm run swagger-autogen  # Generate swagger documentation
+npm run dev
+```
+
+Then visit `http://localhost:3000/api-docs` to view the interactive API documentation.
+
+- View all endpoints
+- Test API calls directly from browser
+- See request/response schemas
+- Authentication support (Bearer token)
+
+**Note:** After adding/modifying endpoints, run `npm run swagger-autogen` to regenerate the documentation.
+
 ## Routes
 
 | Method | Path                          | Auth     | Description                                                 |
