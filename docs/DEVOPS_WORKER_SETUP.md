@@ -2,6 +2,28 @@
 
 This doc is for DevOps to run the **3 workers** required by the Node.js backend.
 
+## ⚠️ Important: Production vs Development
+
+**In Production:**
+
+- ✅ Workers run **automatically** via PM2 or cron
+- ✅ No manual intervention needed after initial setup
+- ✅ Workers restart automatically if they crash
+- ✅ Runs 24/7 without manual commands
+
+**In Development:**
+
+- Manual commands can be used for testing
+- Run `npm run worker:enrich` and `npm run worker:aggregate` manually as needed
+
+**After deployment, you only need to:**
+
+1. Set up PM2 for Enrich + Aggregate workers (Section 3 or 4)
+2. Set up cron for Snapshot worker (Section 5)
+3. Monitor logs: `pm2 logs` or check cron logs
+
+**You do NOT need to manually run worker commands after deployment.**
+
 ---
 
 ## 1. Overview
@@ -204,11 +226,31 @@ module.exports = {
 
 ## 7. Useful commands
 
-| Command                    | Description                                     |
-| -------------------------- | ----------------------------------------------- |
-| `npm run worker:enrich`    | Run enrich once                                 |
-| `npm run worker:aggregate` | Run aggregate once                              |
-| `npm run worker:snapshot`  | Run snapshot once                               |
-| `npm run worker:loop`      | Run enrich → aggregate in a loop (use with PM2) |
+**Note:** In production, workers run **automatically** via PM2 or cron. These commands are for:
 
-PM2: `pm2 list`, `pm2 logs`, `pm2 restart <name>`.
+- **One-time testing** during setup
+- **Manual troubleshooting** if needed
+- **Development** environment
+
+| Command                    | Description                                     | Production Usage                                 |
+| -------------------------- | ----------------------------------------------- | ------------------------------------------------ |
+| `npm run worker:enrich`    | Run enrich once (manual)                        | ❌ Not needed — runs automatically via PM2/cron  |
+| `npm run worker:aggregate` | Run aggregate once (manual)                     | ❌ Not needed — runs automatically via PM2/cron  |
+| `npm run worker:snapshot`  | Run snapshot once (manual)                      | ❌ Not needed — runs automatically via cron      |
+| `npm run worker:loop`      | Run enrich → aggregate in a loop (use with PM2) | ✅ Use with PM2 for automatic continuous running |
+
+**Production Setup (Automatic):**
+
+- **Enrich + Aggregate:** Use `npm run worker:loop` with PM2 (Section 3) — runs automatically 24/7
+- **Snapshot:** Use cron (Section 5) — runs automatically once daily
+
+**PM2 Commands:**
+
+- `pm2 list` - List all running processes
+- `pm2 logs` - View logs for all processes
+- `pm2 logs <name>` - View logs for specific process
+- `pm2 restart <name>` - Restart a process
+- `pm2 stop <name>` - Stop a process
+- `pm2 delete <name>` - Remove a process from PM2
+- `pm2 save` - Save current process list
+- `pm2 startup` - Generate startup script
