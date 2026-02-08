@@ -258,6 +258,7 @@ bearbrick-backend/
     ├── SPECIFICATION.md        # Core specification
     ├── CLARIFICATIONS.md       # Official clarifications
     ├── DEVOPS_WORKER_SETUP.md  # Production worker setup
+    ├── CLIENT_SWAGGER_TESTING.md  # Client: Swagger testing (production)
     ├── MANUAL_TEST_STEPS.md    # Manual testing guide
     └── LOCAL_TESTING.md        # Local testing guide
 ```
@@ -423,6 +424,7 @@ Additional test users: `user1@example.com`, `user2@example.com` (same password)
 - [SPECIFICATION.md](./docs/SPECIFICATION.md) - Core specification document
 - [CLARIFICATIONS.md](./docs/CLARIFICATIONS.md) - Official clarifications
 - [DEVOPS_WORKER_SETUP.md](./docs/DEVOPS_WORKER_SETUP.md) - Production worker setup
+- [CLIENT_SWAGGER_TESTING.md](./docs/CLIENT_SWAGGER_TESTING.md) - **Client guide: test API with Swagger (production)**
 - [MANUAL_TEST_STEPS.md](./docs/MANUAL_TEST_STEPS.md) - Manual testing guide
 - [LOCAL_TESTING.md](./docs/LOCAL_TESTING.md) - Local testing guide
 
